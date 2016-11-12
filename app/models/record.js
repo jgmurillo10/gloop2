@@ -10,10 +10,12 @@ var RecordSchema = new Schema({
 	turbidity: {type: String, required:true},
 	temperature:{type: String, required:true},
 	latitude:{type:String, required:true},
-	longitude:{type:String, required: true}
+	longitude:{type:String, required: true},
+	id_sensor:String
 });
+
 
 
 //return the model
 
-module.exports = mongoose.model('Record', SensorSchema);
+module.exports = mongoose.model('Record', RecordSchema);

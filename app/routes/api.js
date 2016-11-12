@@ -1,5 +1,6 @@
 var User = require('../models/user');
 var Sensor = require('../models/sensor');
+var Record = require('../models/record');
 var jwt = require('jsonwebtoken');
 var config = require('../../config');
 
@@ -110,6 +111,16 @@ apiRouter.get('/me',function(req,res){
 		// sensor.latitude=req.body.latitude;
 		// sensor.longitude=req.body.longitude;
  	})
+ 	.get(function(req,res){
+		Record.find(function(err,records){
+ 			if(err) res.send(err);
+ 			//return the sensors
+
+ 			res.json(records);
+
+ 		});
+	})
+
 apiRouter.route('/sensors')
 	.post(function(req,res){
 		var sensor = new Sensor();
@@ -176,6 +187,40 @@ apiRouter.route('/sensors/:id_sensor')
  				res.json({message: 'Succesfully deleted!'});
  			});
  		});
+
+apiRouter.route('/sensors/:id_sensor/records')
+	.post(function(req,res){
+		var record= new Record();
+		record.date=req.body.date;
+		record.ph=req.body.ph;
+		record.conductivity=req.body.conductivity;
+		record.turbidity=req.body.turbidity;
+		record.temperature=req.body.temperature;
+		record.latitude=req.body.latitude;
+		record.longitude=req.body.longitude;
+		record.id_sensor=req.params.id_sensor;
+		record.save(function(err){
+			if(err){
+				if(err.code == 11000)
+					return res.json({success:false,mesage:'nothing'});
+				else
+					return res.send(err);
+			}
+			res.json({message: 'Record created!'});
+		})
+	})
+
+	.get(function(req,res){
+		var id=req.params.id_sensor;
+		Record.find({id_sensor:req.params.id_sensor}, function(err,records){
+ 			if(err) res.send(err);
+ 			//return the records
+
+ 			res.json(records);
+
+ 		});
+	})
+	
 
 apiRouter.route('/users')
  // create a user (accessed at POST http://localhost:8080/api/users) 
