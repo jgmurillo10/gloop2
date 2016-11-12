@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Sensor = require('../models/sensor');
 var jwt = require('jsonwebtoken');
 var config = require('../../config');
 
@@ -99,6 +100,82 @@ apiRouter.get('/me',function(req,res){
 	res.send(req.decoded);
 });
  // more routes for our API will happen here 
+ apiRouter.route('/records')
+ 	.post(function(req,res){
+ 	// 	sensor.ph=req.body.ph;
+		// sensor.conductivity=req.body.conductivity;
+		// sensor.turbidity=req.body.turbidity;
+		// sensor.temperature=req.body.temperature;
+		// sensor.id_user=req.body.id_user;
+		// sensor.latitude=req.body.latitude;
+		// sensor.longitude=req.body.longitude;
+ 	})
+apiRouter.route('/sensors')
+	.post(function(req,res){
+		var sensor = new Sensor();
+		sensor.name=req.body.name;
+		sensor.id_user=req.body.id_user;
+		sensor.save(function(err){
+
+ 		 	if(err){
+ 		 		//duplicate entry
+ 		 		if(err.code == 11000)
+ 		 			return res.json({success: false, message:' A user  that username already exists. '});
+
+ 		 		else
+ 		 			return res.send(err);
+ 		 		}
+
+
+ 		 			res.json({message: 'sensor created!'});
+ 		 });
+	})
+	.get(function(req,res){
+		Sensor.find(function(err,sensors){
+ 			if(err) res.send(err);
+ 			//return the sensors
+
+ 			res.json(sensors);
+
+ 		});
+	})
+apiRouter.route('/sensors/:id_sensor')
+	.get(function(req,res){
+ 			Sensor.findById(req.params.id_sensor, function(err,sensor){
+ 				if(err) res.send(err);
+
+ 				res.json(sensor);
+
+ 			});
+ 		})
+	.put(function(req,res){
+ 			//use our user model to find the user that we want
+
+ 			Sensor.findById(req.params.id_sensor, function(err,sensor){
+ 				if(err) res.send(err);
+
+ 				//update the users info only if its new
+
+ 				if(req.body.name) sensor.name = req.body.name;
+ 				if(req.body.id_user) sensor.id_user = req.body.id_user;
+ 				//save the user
+ 				sensor.save(function(err){
+ 					if(err) res.send(err);
+ 					//return a message
+
+ 					res.json({message: 'Sensor updated!'});
+ 				});
+ 			});
+
+ 		})
+	.delete(function(req,res){
+ 			Sensor.remove({
+ 				_id: req.params.id_sensor
+ 			}, function(err,sensor){
+ 				if(err) return res.send(err);
+ 				res.json({message: 'Succesfully deleted!'});
+ 			});
+ 		});
 
 apiRouter.route('/users')
  // create a user (accessed at POST http://localhost:8080/api/users) 
