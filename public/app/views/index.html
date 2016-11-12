@@ -19,13 +19,23 @@
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
 
-		<!-- controllers --> 
+		<!-- main --> 
 		<script src="app/components/main/mainCtrl.js"></script>
-		<script src="app/components/user/userCtrl.js"></script> 
+		<script src="app/components/main/authService.js"></script>
 
-		<!-- services -->
-		<script src="app/components/main/authService.js"></script> 
+		<!-- user --> 
+		<script src="app/components/user/userCtrl.js"></script> 
 		<script src="app/components/user/userService.js"></script> 
+
+		<!-- record -->
+		<script src="app/components/record/recordCtrl.js"></script> 
+		<script src="app/components/record/recordsService.js"></script> 
+
+
+		<!-- sensor -->
+		<script src="app/components/sensor/sensorCtrl.js"></script> 
+		<script src="app/components/sensor/sensorService.js"></script> 
+
 
 		<!-- main Angular app files -->
 		<script src="app/app.js"></script>
@@ -54,7 +64,7 @@
 </header>
 <main class="container">
 	<!--Angular views-->
-	<div ng-view></div>
+	<div ui-view></div>
 </main>
 
 </body>

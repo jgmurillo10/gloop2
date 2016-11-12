@@ -1,6 +1,6 @@
 angular.module('mainCtrl', [])
 
-.controller('mainController', function($rootScope, $location, Auth) {
+.controller('mainController', function($rootScope, $state, Auth) {
   var vm = this;
 
   // get info if a person is logged in
@@ -29,7 +29,7 @@ angular.module('mainCtrl', [])
       vm.processing = false;
       // if a user logs in successfully, redirect to users page
       if (data.success) {
-        $location.path('users');
+        $state.go('users');
       } else {
         vm.error = data.message;
       }
@@ -41,7 +41,7 @@ angular.module('mainCtrl', [])
     Auth.logout();
     // reset all user info
     vm.user = {};
-    $location.path('/login');
+    $state.('login');
   };
 
 });

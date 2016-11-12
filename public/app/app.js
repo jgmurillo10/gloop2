@@ -4,11 +4,16 @@ angular.module('userApp', [
   'authService',
   'mainCtrl',
   'userCtrl',
-  'userService'
+  'userService',
+  'sensorService',
+  'sensorCtrl',
+  'recordService',
+  'recordCtrl',
+  'recordService'
 ])
 
 // application configuration to integrate token into requests
-.config(function($httpProvider) {
+.config(function($httpProvider, $stateProvider) {
 
   // attach our auth interceptor to the http requests
   $httpProvider.interceptors.push('AuthInterceptor');
