@@ -5,12 +5,12 @@ angular.module('sensorService', [])
 
 	// get a single sensor
 	sensorFactory.get = function(id_user, id_sensor) {
-		return $http.get('/api/users/' + id_user + '/sensors/'+id_sensor);
+		return $http.get('/api/sensors/'+id_sensor);
 	};
 
 	// get all sensors
 	sensorFactory.all = function(id_user) {
-		return $http.get('/api/users/'+ id_user + '/sensors');
+		return $http.get('/api/users/'+id_user+'/sensors');
 	};
 
 	// create a sensor

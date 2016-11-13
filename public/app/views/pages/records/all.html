@@ -1,0 +1,39 @@
+<div class="page-header" ng-controller="recordController as record">
+	<h1>
+		Records
+		
+	</h1>
+</div>
+<!--loading message-->
+<div class="jumbotron text-center" ng-show="record.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading records...</p>
+</div>
+
+<table class="table table-bordered table-striped" ng-show="record.records.length">
+	<thead>
+		<tr>
+			<th>_id</th>
+			<th>date</th>
+			<th>pH</th>
+			<th>conductivity</th>
+			<th>turbidity</th>
+			<th>temperature</th>
+			<th>latitude</th>
+			<th>longitude</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--loop over the users-->
+		<tr ng-repeat="person in record.records track by $index">
+			<td>{{person._id}}</td>
+			<td>{{person.date}}</td>
+			<td>{{person.ph}}</td>
+			<td>{{person.conductivity}}</td>
+			<td>{{person.turbidity}}</td>
+			<td>{{person.temperature}}</td>
+			<td>{{person.latitude}}</td>
+			<td>{{person.longitude}}</td>
+		</tr>
+	</tbody>
+</table>

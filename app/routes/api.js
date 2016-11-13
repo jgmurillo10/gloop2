@@ -263,8 +263,6 @@ apiRouter.route('/users')
 
  		});
  	});
-
-
  apiRouter.route('/users/:user_id')
  		//get the user with that id
  		// (accessed at GET http://localhost:8080/api/users/:user_id)
@@ -310,17 +308,26 @@ apiRouter.route('/users')
  			});
  		});
 
+
  apiRouter.route('/users/:user_id/sensors')
-		.get(function(req,res){
- 		Sensors.findById(req.params.user_id,function(err,sensors){
+		 .get(function(req,res){
+		Sensor.find({id_user:req.params.user_id},function(err,sensors){
  			if(err) res.send(err);
- 			//return the users
+ 			//return the sensors
 
  			res.json(sensors);
 
  		});
- 	});
-
+	})
+apiRouter.route('/users/:user_id/sensors/:sensor_id')
+		.delete(function(req,res){
+			Sensor.remove({
+ 				_id: req.params.sensor_id
+ 			}, function(err,sensor){
+ 				if(err) return res.send(err);
+ 				res.json({message: 'Succesfully deleted!'});
+ 			});
+		})
  		return apiRouter;
 
 };

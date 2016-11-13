@@ -7,14 +7,12 @@ angular.module('sensorCtrl', ['sensorService'])
   vm.sensor_id=$stateParams.sensor_id;
   // set a processing variable to show loading things
   vm.processing = true;
-  console.log(':)');
 
   // grab all the users at page load
   Sensor.all($stateParams.user_id)
   .success(function(data) {
     // when all the users come back, remove the processing variable
     vm.processing = false;
-    console.log(':)');
     // bind the users that come back to vm.users
     vm.sensors = data;
   })
@@ -24,7 +22,7 @@ angular.module('sensorCtrl', ['sensorService'])
     vm.processing = true;
 
     // accepts the user id as a parameter
-    Sensor.delete(id)
+    Sensor.delete($stateParams.user_id, id)
     .success(function(data) {
 
       // get all users to update the table

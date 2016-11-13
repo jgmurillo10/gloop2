@@ -51,4 +51,10 @@ angular.module('app.routes', ['ui.router'])
       controller  : "sensorEditController",
       controllerAs: "sensor"
     })
+    .state('records', {
+      url         : "/users/:user_id/sensors/:sensor_id/records",
+      templateUrl : "app/views/pages/records/all.html",
+      controller  : "recordController",
+      controllerAs: "record"
+    })
 });

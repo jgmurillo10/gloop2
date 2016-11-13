@@ -1,4 +1,4 @@
-<div class="page-header" ng-controller="sensorController as sensor">
+<div class="page-header">
 	<h1>
 		Sensors
 		<a href="/users/{{sensor.user_id}}/sensors/create" class="btn btn-default">
@@ -8,12 +8,12 @@
 	</h1>
 </div>
 <!--loading message-->
-<div class="jumbotron text-center" ng-show="user.processing">
+<div class="jumbotron text-center" ng-show="sensor.processing">
 	<span class="glyphicon glyphicon-repeat spinner"></span>
 	<p>Loading sensors...</p>
 </div>
 
-<table class="table table-bordered table-striped" ng-show="sensor.sensors">
+<table class="table table-bordered table-striped"  ng-show="sensor.sensors.length">
 	<thead>
 		<tr>
 			<th>_id</th>
@@ -27,9 +27,9 @@
 			<td>{{person._id}}</td>
 			<td>{{person.name}}</td>
 			<td class="col-sm-2">
-				<a href="/users/{{person._id}}/sensors" class="btn btn-default">View</a>
-				<a href="/users/edit/{{person._id}}" class="btn btn-danger">Edit</a>
-				<a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-primary">Delete</a>
+				<a href="/users/{{sensor.user_id}}/sensors/{{person._id}}/records" class="btn btn-default">View</a>
+				<a href="users/{{sensor.user_id}}/sensors/edit/{{person._id}}" class="btn btn-danger">Edit</a>
+				<a href="#" ng-click="sensor.deleteSensor(person._id)" class="btn btn-primary">Delete</a>
 			</td>
 		</tr>
 	</tbody>
