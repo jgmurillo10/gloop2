@@ -310,6 +310,17 @@ apiRouter.route('/users')
  			});
  		});
 
+ apiRouter.route('/users/:user_id/sensors')
+		.get(function(req,res){
+ 		Sensors.findById(req.params.user_id,function(err,sensors){
+ 			if(err) res.send(err);
+ 			//return the users
+
+ 			res.json(sensors);
+
+ 		});
+ 	});
+
  		return apiRouter;
 
 };

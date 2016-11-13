@@ -41,7 +41,7 @@ angular.module('mainCtrl', [])
     Auth.logout();
     // reset all user info
     vm.user = {};
-    $state.('login');
+    $state.go('login');
   };
 
 });

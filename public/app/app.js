@@ -1,5 +1,5 @@
-angular.module('userApp', [
-  'ngAnimate',
+angular.module('GloopApp', 
+  [
   'app.routes',
   'authService',
   'mainCtrl',
@@ -8,8 +8,7 @@ angular.module('userApp', [
   'sensorService',
   'sensorCtrl',
   'recordService',
-  'recordCtrl',
-  'recordService'
+  'recordCtrl'
 ])
 
 // application configuration to integrate token into requests

@@ -1,33 +1,31 @@
-<div class="page-header">
+<div class="page-header" ng-controller="sensorController as sensor">
 	<h1>
-		Users
-		<a href="/users/create" class="btn btn-default">
+		Sensors
+		<a href="/users/{{sensor.user_id}}/sensors/create" class="btn btn-default">
 			<span class="glyphicon glyphicon-plus"></span>
-			New User
+			New Sensor
 		</a>
 	</h1>
 </div>
 <!--loading message-->
 <div class="jumbotron text-center" ng-show="user.processing">
 	<span class="glyphicon glyphicon-repeat spinner"></span>
-	<p>Loading users...</p>
+	<p>Loading sensors...</p>
 </div>
 
-<table class="table table-bordered table-striped" ng-show="user.users">
+<table class="table table-bordered table-striped" ng-show="sensor.sensors">
 	<thead>
 		<tr>
 			<th>_id</th>
 			<th>Name</th>
-			<th>Username</th>
 			<th class="col-sm-2"></th>
 		</tr>
 	</thead>
 	<tbody>
 		<!--loop over the users-->
-		<tr ng-repeat="person in user.users">
+		<tr ng-repeat="person in sensor.sensors">
 			<td>{{person._id}}</td>
 			<td>{{person.name}}</td>
-			<td>{{person.username}}</td>
 			<td class="col-sm-2">
 				<a href="/users/{{person._id}}/sensors" class="btn btn-default">View</a>
 				<a href="/users/edit/{{person._id}}" class="btn btn-danger">Edit</a>

@@ -40,7 +40,7 @@ angular.module('userCtrl', ['userService'])
 
 })
 // controller applied to user creation page
-.controller('userCreateController', function(User) {
+.controller('userCreateController', function(User, $state) {
 
   var vm = this;
 
@@ -60,6 +60,7 @@ angular.module('userCtrl', ['userService'])
     .success(function(data) {
       vm.processing = false;
 
+      $state.go('users');
       // clear the form
       vm.userData = {};
       vm.message = data.message;
@@ -68,7 +69,7 @@ angular.module('userCtrl', ['userService'])
   };
 
 })
-.controller('userEditController', function($routeParams, User) {
+.controller('userEditController', function($stateParams, User, $state) {
 
   var vm = this;
 
@@ -78,7 +79,7 @@ angular.module('userCtrl', ['userService'])
 
   // get the user data for the user you want to edit
   // $routeParams is the way we grab data from the URL
-  User.get($routeParams.user_id)
+  User.get($stateParams.user_id)
     .success(function(data) {
       vm.userData = data;
       console.log(data);
@@ -90,10 +91,10 @@ angular.module('userCtrl', ['userService'])
     vm.message = '';
 
     // call the userService function to update
-    User.update($routeParams.user_id, vm.userData)
+    User.update($stateParams.user_id, vm.userData)
       .success(function(data) {
         vm.processing = false;
-
+        $state.go('users');
         // clear the form
         vm.userData = {};
 
