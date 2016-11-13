@@ -22,24 +22,30 @@
 	<p>Loading sensors...</p>
 </div>
 
-<table class="table table-bordered table-striped"  ng-show="sensor.sensors.length">
-	<thead>
-		<tr>
-			<th>_id</th>
-			<th>Name</th>
-			<th class="col-sm-2"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<!--loop over the users-->
-		<tr ng-repeat="person in sensor.sensors">
-			<td>{{person._id}}</td>
-			<td>{{person.name}}</td>
-			<td class="col-sm-2">
-				<a href="/users/{{sensor.user_id}}/sensors/{{person._id}}/records" class="btn btn-default">View</a>
-				<a href="/users/{{sensor.user_id}}/sensors/edit/{{person._id}}" class="btn btn-danger">Edit</a>
-				<a href="#" ng-click="sensor.deleteSensor(person._id)" class="btn btn-primary">Delete</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
+
+
+
+
+
+<div class="row">
+		<div class="col-sm-3 col-md-3" ng-repeat="person in sensor.sensors" ng-show="sensor.sensors">
+			<div class="thumbnail">
+		      <div class="caption">
+		        <img src="https://enteratec.com/wp-content/uploads/2016/10/WIFI_icon.svg_-e1475836534862.png">
+		        <h3><strong>{{person.name}}</strong></h3>
+		        <p>: {{person._id}}</p>
+
+		        
+		      		<div class="btn-group btn-group-justified">
+							<a href="/users/{{sensor.user_id}}/sensors/{{person._id}}/records" class="btn btn-default">View</a>
+							<a href="/users/{{sensor.user_id}}/sensors/edit/{{person._id}}" class="btn btn-danger">Edit</a>
+							<a href="#" ng-click="sensor.deleteSensor(person._id)" class="btn btn-primary">Delete</a>
+						
+					</div>
+
+
+		      </div>
+		    </div>
+		</div>
+	</div>
+

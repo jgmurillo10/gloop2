@@ -23,26 +23,29 @@
 	<p>Loading users...</p>
 </div>
 
-<table class="table table-bordered table-striped" ng-show="user.users">
-	<thead>
-		<tr>
-			<th>_id</th>
-			<th>Name</th>
-			<th>Username</th>
-			<th class="col-sm-2"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<!--loop over the users-->
-		<tr ng-repeat="person in user.users">
-			<td>{{person._id}}</td>
-			<td>{{person.name}}</td>
-			<td>{{person.username}}</td>
-			<td class="col-sm-2">
-				<a href="/users/{{person._id}}/sensors" class="btn btn-default">View</a>
-				<a href="/users/edit/{{person._id}}" class="btn btn-danger">Edit</a>
-				<a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-primary">Delete</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
+
+
+
+<div class="row">
+		<div class="col-sm-3 col-md-3" ng-repeat="person in user.users" ng-show="user.users">
+			<div class="thumbnail">
+		      <div class="caption">
+		        <img src="http://www.globaldemocracy.com/assets/img/anonymous-200.gif">
+		        <h3><strong>{{person.name}}</strong></h3>
+		        <p>Username: {{person.username}}</p>
+
+		        
+		      		<div class="btn-group btn-group-justified">
+						<a href="/users/{{person._id}}/sensors" class="btn btn-default">View</a>
+						<a href="/users/edit/{{person._id}}" class="btn btn-danger">Edit</a>
+						<a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-primary">Delete</a>
+						
+					</div>
+
+
+		      </div>
+		    </div>
+		</div>
+	</div>
+
+
