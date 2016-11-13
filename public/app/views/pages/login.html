@@ -1,31 +1,42 @@
 <div class="row col-sm-6 col-sm-offset-3">
 	<div class="jumbotron">
-		<h1>Login</h1>
-		<form ng-submit="main.doLogin()">
-			<!--USERNAME INPUT-->
-			<div class="form-group">
-				<label>Username</label>
-				<input type="text" class="form-control" ng-model="main.loginData.username">
+		<div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+						<form ng-submit="main.doLogin()">
+							<!--USERNAME INPUT-->
+							<div class="form-group">
+								<!-- <label>Username</label> -->
+								<input type="text" placeholder="Username" class="form-control" ng-model="main.loginData.username">
+							</div>
+
+							<!--PASSWORD INPUT-->
+							<div class="form-group">
+								<!-- <label>Password</label> -->
+								<input type="password" placeholder="Password" class="form-control" ng-model="main.loginData.password">
+							</div>
+							<div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                    </label>
+                                </div>
+
+							<div class="alert alert-danger" ng-if="main.error">
+								{{login.error}}
+							</div>
+
+							<!--LOGIN BUTTON-->
+							<button type="submit" class="btn btn-block btn-primary">
+								<span ng-if="!main.processing">Login</span>
+								<span ng-if="main.processing" class="spinner">
+									<span class="glyphicon glyphicon-repeat"></span>
+								</span>
+							</button>
+
+						</form>
+					</div>
 			</div>
-
-			<!--PASSWORD INPUT-->
-			<div class="form-group">
-				<label>Password</label>
-				<input type="password" class="form-control" ng-model="main.loginData.password">
-			</div>
-
-			<div class="alert alert-danger" ng-if="main.error">
-				{{login.error}}
-			</div>
-
-			<!--LOGIN BUTTON-->
-			<button type="submit" class="btn btn-block btn-primary">
-				<span ng-if="!main.processing">Login</span>
-				<span ng-if="main.processing" class="spinner">
-					<span class="glyphicon glyphicon-repeat"></span>
-				</span>
-			</button>
-
-		</form>
 	</div>
 </div>
