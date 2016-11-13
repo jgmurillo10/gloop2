@@ -57,4 +57,16 @@ angular.module('app.routes', ['ui.router'])
       controller  : "recordController",
       controllerAs: "record"
     })
+    .state('contact', {
+      url         : "/contact",
+      templateUrl : "app/views/pages/contact.html"
+    })
+    .state('about', {
+      url         : "/about",
+      templateUrl : "app/views/pages/about.html"
+    })
+    .state('club', {
+      url         : "/club",
+      templateUrl : "app/views/pages/club.html"
+    })
 });

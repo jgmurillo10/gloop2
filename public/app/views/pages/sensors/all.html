@@ -1,4 +1,13 @@
 <div class="page-header">
+	<div class="row">
+			<div class="col-sm-12">
+				<ol class="breadcrumb">
+				  <li><a ui-sref="home">Main</a></li>
+				  <li class=""><a href="/users/">Users</a></li>
+				  <li class="active">Sensors</li>
+				</ol>
+			</div>
+		</div>
 	<h1>
 		Sensors
 		<a href="/users/{{sensor.user_id}}/sensors/create" class="btn btn-default">
@@ -28,7 +37,7 @@
 			<td>{{person.name}}</td>
 			<td class="col-sm-2">
 				<a href="/users/{{sensor.user_id}}/sensors/{{person._id}}/records" class="btn btn-default">View</a>
-				<a href="users/{{sensor.user_id}}/sensors/edit/{{person._id}}" class="btn btn-danger">Edit</a>
+				<a href="/users/{{sensor.user_id}}/sensors/edit/{{person._id}}" class="btn btn-danger">Edit</a>
 				<a href="#" ng-click="sensor.deleteSensor(person._id)" class="btn btn-primary">Delete</a>
 			</td>
 		</tr>

@@ -1,4 +1,15 @@
 <div class="page-header" ng-controller="recordController as record">
+	<div class="row">
+			<div class="col-sm-12">
+				<ol class="breadcrumb">
+				  <li><a ui-sref="home">Main</a></li>
+				  <li class=""><a href="/users/">Users</a></li>
+				  <li ><a href="/users/{{record.user_id}}/sensors">Sensors</a></li>
+				  <li class="active">Records</li>
+				  
+				</ol>
+			</div>
+		</div>
 	<h1>
 		Records
 		
