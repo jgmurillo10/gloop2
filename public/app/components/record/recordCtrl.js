@@ -39,7 +39,7 @@ angular.module('recordCtrl', ['recordService'])
 
 })
 // controller applied to user creation page
-.controller('sensorCreateController', function($stateParams, Sensor, $state) {
+.controller('recordCreateController', function($stateParams, Sensor, $state) {
 
   var vm = this;
   	vm.user_id=$stateParams.user_id;
@@ -70,7 +70,7 @@ angular.module('recordCtrl', ['recordService'])
   };
 
 })
-.controller('sensorEditController', function($stateParams, Sensor, $state) {
+.controller('recordEditController', function($stateParams, Sensor, $state) {
 
   var vm = this;
   	vm.user_id=$stateParams.user_id;
